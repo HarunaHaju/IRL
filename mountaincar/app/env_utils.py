@@ -5,22 +5,25 @@ import numpy as np
 
 def draw_learning_curve_raw(episodes, scores, file_path, title):
     #  对最后100个数据取平均值
-    s = []
-    for i in range(len(score)):
-        if i < 100:
-            s.append(np.average(score[:i + 1]))
-        else:
-            s.append(np.average(score[i-100:i+1]))
-    plt.plot(episodes, s)
-    label = ['average score of past 100 step']
+    plt.plot(episodes, scores)
+    label = ['score']
     plt.legend(label, loc='upper left')
     plt.title(title)
     plt.show()
 
 
-
-def draw_learning_curve_ave100(episodes, scores, file_path):
-    pass
+def draw_learning_curve_ave100(episodes, scores, file_path, title):
+    s = []
+    for i in range(len(score)):
+        if i < 100:
+            s.append(np.average(score[:i + 1]))
+        else:
+            s.append(np.average(score[i - 100:i + 1]))
+    plt.plot(episodes, s)
+    label = ['average score of past 100 step']
+    plt.legend(label, loc='upper left')
+    plt.title(title)
+    plt.show()
 
 
 # 将状态转化为q_table里的index
